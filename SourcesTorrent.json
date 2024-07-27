@@ -3,9 +3,9 @@
   "author": "Someone",
   "sources": [
     {
-      "name": "1337x",
+      "name": "limetor",
       "version": 1,
-      "baseUrl": "https://1337x.to",
+      "baseUrl": "https://www.limetorrents.lol/home",
       "htmlParser": {
         "searchUrl": "/search/{query}/1/",
         "rows": ".table-list tbody tr",
