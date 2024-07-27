@@ -1,0 +1,42 @@
+name: Public domain plugins
+author: kingbri
+sources:
+  - name: LinuxTracker
+    version: 1
+    minVersion: '0.7'
+    about: >-
+      A torrent indexer for various Linux distributions
+    website: https://linuxtracker.org
+    tags:
+      - name: Reliable
+        color: 34c759
+      - name: Linux
+      - name: ISOs
+    htmlParser:
+      searchUrl: /index.php?page=torrents&search={query}&category=0&active=1
+      rows: td#mcol table:nth-child(1) > tbody > tr:has(a)
+      magnet:
+        query: td:nth-child(2) > a:nth-child(1)
+        attribute: href
+      title:
+        query: td:nth-child(2) > font > strong > a
+      size:
+        query: td:nth-child(2) > table:nth-child(5) > tbody > tr:nth-child(2) > td:nth-child(1)
+        regex: 'Size: (.*)'
+      sl:
+        seeders: td:nth-child(2) > table:nth-child(5) > tbody > tr:nth-child(3) > td:nth-child(1)
+        seederRegex: 'Seeds (.*)'
+        leechers: td:nth-child(2) > table:nth-child(5) > tbody > tr:nth-child(4) > td:nth-child(1)
+        leecherRegex: 'Leechers (.*)'
+actions:
+  - name: Open in Safari
+    version: 1
+    minVersion: '0.7'
+    about: |-
+      Opens the given link in Safari
+    website: https://www.apple.com/safari/
+    requires:
+      - debrid
+    deeplink:
+      - os: iOS
+        scheme: '{link}'
